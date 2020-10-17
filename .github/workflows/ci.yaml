@@ -1,0 +1,30 @@
+name: Checks
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: Additional Checkout
+        if: ${{ github.event_name == 'pull_request' }}
+        run: git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+      - name: Get Node Version
+        id: nvm
+        run: echo ::set-output name=version::$(cat .nvmrc)
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '${{ steps.nvm.outputs.version }}'
+      - name: Install
+        run: yarn install
+      - name: Build
+        run: yarn build
+      - name: Test
+        run: yarn test
+
