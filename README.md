@@ -1,4 +1,4 @@
-#Advanced Software Engineering candidates form.
+# Advanced Software Engineering candidates form
 Using this form candidates can share their achievements with committee
 
 ## Available Scripts
