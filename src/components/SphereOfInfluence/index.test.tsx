@@ -4,6 +4,6 @@ import SphereOfInfluence from './index'
 
 test('renders welcome words', () => {
     const { getByText } = render(<SphereOfInfluence />)
-    const textElement = getByText(/Welcome to Sphere of Influence category of Advanced Engineering performance form!/i)
+    const textElement = getByText(/Powered by EPAM/i)
     expect(textElement).toBeInTheDocument()
 })
