@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Image, Flex } from '@chakra-ui/core'
-import Logo from '../../images/ase_logo.png'
+import Logo from '../../images/ase_logo.svg'
 
 const Header = () => {
     return (

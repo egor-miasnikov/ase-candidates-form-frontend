@@ -1,140 +1,41 @@
-import React, { ChangeEvent, FormEvent, KeyboardEvent, useState } from 'react'
-import { Box, Button, Input, Text, InputGroup, Image, Flex, Grid, InputRightElement, PseudoBox } from '@chakra-ui/core'
-import * as firebase from 'firebase/app'
+import React, { useState } from 'react'
+import { Box, Flex, Grid, Image } from '@chakra-ui/core'
 import { Redirect } from 'react-router-dom'
-import eyeOff from '../../images/eye-off.svg'
-import eye from '../../images/eye.svg'
 import 'firebase/auth'
 import './index.css'
-import Header from '../Header'
-import Footer from '../Footer'
+import Google from './Google'
+import pic from '../../images/illustration.svg'
+import Logo from '../../images/ase_logo.svg'
+import details from '../../images/details.svg'
 
 const Login = () => {
-    const initErrorState = {
-        user: { isUserInvalid: false, userErrorText: '' },
-        pass: { isPassInvalid: false, passErrorText: '' },
-    }
-    const [show, setShow] = useState(false)
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
     const [isLogin, setIsLogin] = useState(false)
-    const [passError, setPassError] = useState(initErrorState.pass)
-    const [userError, setUserError] = useState(initErrorState.user)
-    const handleLogin = () => {
-        setPassError(initErrorState.pass)
-        setUserError(initErrorState.user)
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(username, password)
-            .then((result) => {
-                setIsLogin(true)
-            })
-            .catch(function ({ code }) {
-                const errors = {
-                    invalidEmail: 'auth/invalid-email',
-                    invalidPass: 'auth/wrong-password',
-                    noUser: 'auth/user-not-found',
-                }
-                if (code === errors.invalidEmail) {
-                    setUserError({ isUserInvalid: true, userErrorText: 'Email must to be correct' })
-                } else if (code === errors.noUser) {
-                    setUserError({ isUserInvalid: true, userErrorText: 'Wrong password' })
-                } else if (code === errors.invalidPass) {
-                    setPassError({ isPassInvalid: true, passErrorText: 'User not found' })
-                }
-                console.log(code)
-            })
-    }
-
-    const checkEnterKey = (e: KeyboardEvent) => {
-        if (e.key === 'Enter') {
-            handleLogin()
-        }
-    }
     return (
-        <div className="Login">
-            <Grid templateRows="1fr 3fr 1fr" height="100VH">
-                <Header />
-                <Box marginTop="32px">
-                    <Flex alignItems="center" justifyContent="center" flexDirection="column">
-                        <Flex
-                            alignItems="center"
-                            justifyContent="center"
-                            flexDirection="column"
-                            h="560px"
-                            w="559px"
-                            border="1px solid #E2E8F0"
-                            borderRadius="4px"
-                        >
-                            <Box marginTop="40px" h="65px">
-                                <InputGroup>
-                                    <Input
-                                        placeholder={'Email'}
-                                        onChange={(e: FormEvent | ChangeEvent<any>) => setUsername(e.target.value)}
-                                        h="48px"
-                                        w="306px"
-                                        color="#0A1010"
-                                        errorBorderColor="#E74424"
-                                        isInvalid={userError.isUserInvalid}
-                                    />
-                                </InputGroup>
-                                {userError.isUserInvalid && (
-                                    <Text marginTop="4px" color="#E74424" fontSize="11px" lineHeight="13px">
-                                        {userError.userErrorText}
-                                    </Text>
-                                )}
-                            </Box>
-
-                            <Box marginTop="32px" h="65px">
-                                <InputGroup>
-                                    <Input
-                                        pr="4.5rem"
-                                        type={show ? 'text' : 'password'}
-                                        placeholder={'Password'}
-                                        onChange={(e: FormEvent | ChangeEvent<any>) => setPassword(e.target.value)}
-                                        onKeyDown={checkEnterKey}
-                                        w="306px"
-                                        h="48px"
-                                        color="#0A1010"
-                                        errorBorderColor="#E74424"
-                                        isInvalid={passError.isPassInvalid}
-                                    />
-                                    <InputRightElement top="4px" right="12px">
-                                        <PseudoBox onClick={() => setShow(!show)}>
-                                            {show ? (
-                                                <Image alt="" h="16px" w="16px" src={eye} />
-                                            ) : (
-                                                <Image alt="" h="16px" w="16px" src={eyeOff} />
-                                            )}
-                                        </PseudoBox>
-                                    </InputRightElement>
-                                </InputGroup>
-                                {passError.isPassInvalid && (
-                                    <Text marginTop="4px" color="#E74424" fontSize="11px" lineHeight="13px">
-                                        {passError.passErrorText}
-                                    </Text>
-                                )}
-                            </Box>
-
-                            <Button
-                                onClick={handleLogin}
-                                w="306px"
-                                marginTop="80px"
-                                h="48px"
-                                border="1px solid #81B6B2"
-                                borderRadius="4px"
-                                backgroundColor="#81B6B2"
-                                _hover={{ backgroundColor: '#5A9794' }}
-                            >
-                                <Text color="white">{'Login'}</Text>
-                            </Button>
-                            {isLogin && <Redirect to="/" />}
+        <Box>
+            <Grid templateRows="1fr 3fr" height="100VH">
+                <Box display="block">
+                    <Grid templateColumns="1fr 1fr">
+                        <Flex alignItems="flex-start" flexDirection="column" marginTop="86px" marginLeft="117px">
+                            <Image height="64px" width="126px" src={Logo} />
                         </Flex>
-                    </Flex>
+                        <Flex alignItems="flex-end" flexDirection="column">
+                            <Image src={details} />
+                        </Flex>
+                    </Grid>
                 </Box>
-                <Footer />
+                <Box>
+                    <Grid templateColumns="1fr 1fr">
+                        <Flex alignItems="center" justifyContent="center" flexDirection="column">
+                            <Image src={pic} />
+                        </Flex>
+                        <Flex alignItems="flex-start" justifyContent="center" flexDirection="row" marginTop="50px">
+                            <Google setIsLogin={setIsLogin} />
+                        </Flex>
+                        {isLogin && <Redirect to="/" />}
+                    </Grid>
+                </Box>
             </Grid>
-        </div>
+        </Box>
     )
 }
 
