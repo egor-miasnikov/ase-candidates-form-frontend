@@ -1,6 +1,6 @@
 import { Categories, getVector, SubCategories, Vector as VectorInterface } from '../Services'
 import React, { ChangeEvent, useState, useEffect } from 'react'
-import { Box, Divider, Flex, InputGroup, Text, Textarea, InputRightElement, Icon } from '@chakra-ui/core'
+import { Box, Divider, Flex, InputGroup, Text, Textarea, InputRightElement, Icon, Button } from '@chakra-ui/core'
 
 const Vector = ({ vectorName }: Record<any, any>) => {
     const initSubCategories: SubCategories[] = [{ title: '', placeholder: '', stateName: '', AseLevel: 0 }]
@@ -83,6 +83,9 @@ const Vector = ({ vectorName }: Record<any, any>) => {
                         </Text>
                     </Flex>
                     {getCategoryList()}
+                    <Button variantColor="teal" size="lg">
+                        Save
+                    </Button>
                 </Box>
             ) : null}
         </div>

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Box, Image, Flex } from '@chakra-ui/core'
-import Logo from '../../images/ase_logo.png'
+import Logo from '../../images/ase_logo.svg'
 
 const Header = () => {
     return (
         <Box display="block" marginTop="20px">
-            <Flex alignItems="flex-start" flexDirection="column">
+            <Flex alignItems="center" justifyContent="center" flexDirection="column">
                 <Image height="240px" width="240px" src={Logo} />
             </Flex>
         </Box>

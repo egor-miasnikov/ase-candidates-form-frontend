@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css'
-import { Box, Flex, Grid, Text } from '@chakra-ui/core'
+import { Box, Grid } from '@chakra-ui/core'
 import Header from '../Header'
 import Footer from '../Footer'
 import Vector from '../Vector'

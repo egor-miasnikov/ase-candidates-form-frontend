@@ -84,18 +84,10 @@ async function getCollectionWitSubCollectionsByRef(ref: firebase.firestore.Colle
                 }
             })
             const category = doc.data()
-            console.log('DEBUG::category', category)
-            console.log('DEBUG::subCategories', subCategories)
             category['subCategories'] = subCategories
             vectorCategories.push(category)
         }
-        // const vectorCategories = result.docs.map(async (doc) => {
-        //     const subCategoriesData = await ref.doc(doc.id).collection('subCategories').get()
-        //     const subCategories = subCategoriesData.docs.map((doc) => doc.data())
-        //     const category = doc.data()
-        //     category['subCategories'] = subCategories
-        //     return category
-        // })
+
         return vectorCategories
     } catch (e) {
         console.error(e)
@@ -114,7 +106,7 @@ export async function getVector(vectorName: string): Promise<Vector | null> {
     return vector as Vector
 }
 
-// const DevelopmentExperiencePart = {
+//DevelopmentExperiencePart = {
 //     title:
 //         'Welcome to Development Experience and Knowledge category of Advanced Engineering performance form! HERE WE NEED ADD SOME TEXT FOR DECRIPTION AND ONBOARDING',
 //     categories: [

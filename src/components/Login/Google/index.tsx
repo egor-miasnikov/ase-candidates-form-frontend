@@ -1,7 +1,8 @@
 import { auth, firebase } from '../../Firebase'
 import { getUserInfo, User, userSignUp } from '../../Services'
-import { Box, Button, Flex, Text } from '@chakra-ui/core'
+import { Box, Button, Flex, Image, Text } from '@chakra-ui/core'
 import React from 'react'
+import GoogleIcon from '../../../images/google.svg'
 
 const Google = ({ setIsLogin }: Record<any, any>) => {
     async function handleLogin() {
@@ -21,32 +22,42 @@ const Google = ({ setIsLogin }: Record<any, any>) => {
     }
 
     return (
-        <div className="Google">
-            <Box marginTop="32px">
-                <Flex
-                    alignItems="flex-start"
-                    justifyContent="center"
-                    flexDirection="row"
-                    h="560px"
-                    w="559px"
-                    border="1px solid #E2E8F0"
+        <Box className="Google" width="400px">
+            <Flex justifyContent="center" alignItems="center">
+                <Text fontSize="48px" lineHeight="57px" letterSpacing="0.8px" fontWeight="600">
+                    Welcome!
+                </Text>
+            </Flex>
+            <Flex alignItems="center" justifyContent="center" marginTop="16px">
+                <Text fontSize="18px" lineHeight="32px" letterSpacing="0.2px">
+                    Log in with your Google account to fill the form. Good luck!
+                </Text>
+            </Flex>
+            <Flex alignItems="center" justifyContent="center" flexDirection="row">
+                <Button
+                    onClick={handleLogin}
+                    w="400px"
+                    marginTop="64px"
+                    h="56px"
+                    border="1px solid #414042"
                     borderRadius="4px"
+                    backgroundColor="#414042"
+                    _hover={{ backgroundColor: '#414042' }}
                 >
-                    <Button
-                        onClick={handleLogin}
-                        w="306px"
-                        marginTop="80px"
-                        h="48px"
-                        border="1px solid #81B6B2"
-                        borderRadius="4px"
-                        backgroundColor="#81B6B2"
-                        _hover={{ backgroundColor: '#5A9794' }}
+                    <Image height="24px" width="24px" src={GoogleIcon} />
+                    <Text
+                        color="white"
+                        marginLeft="10px"
+                        fontSize="18px"
+                        lineHeight="32px"
+                        letterSpacing="0.2px"
+                        fontWeight="600"
                     >
-                        <Text color="white">{'Login via Google'}</Text>
-                    </Button>
-                </Flex>
-            </Box>
-        </div>
+                        {'Login via Google'}
+                    </Text>
+                </Button>
+            </Flex>
+        </Box>
     )
 }
 
