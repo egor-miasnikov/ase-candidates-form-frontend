@@ -29,7 +29,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "REACT_APP_ENV=prod react-scripts build",
-    "test": "react-scripts test"
+    "test": "CI=true react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"

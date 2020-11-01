@@ -16,7 +16,7 @@ const App = () => {
     return (
         <Router>
             <Switch>
-                <Grid templateColumns="1fr 3fr 1fr" height="100VH">
+                <Grid templateColumns="1fr 10fr 1fr" height="100VH">
                     <Box />
                     <Route exact path="/login" component={() => <Login />} />
                     <PrivateRoute exact path="/" component={() => <Home />} />

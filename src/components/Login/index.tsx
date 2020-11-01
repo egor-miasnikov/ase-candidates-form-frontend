@@ -12,11 +12,11 @@ const Login = () => {
     const [isLogin, setIsLogin] = useState(false)
     return (
         <Box>
-            <Grid templateRows="1fr 3fr" height="100VH">
+            <Grid templateRows="1fr 3fr">
                 <Box display="block">
                     <Grid templateColumns="1fr 1fr">
-                        <Flex alignItems="flex-start" flexDirection="column" marginTop="86px" marginLeft="117px">
-                            <Image height="64px" width="126px" src={Logo} />
+                        <Flex alignItems="flex-start" flexDirection="column" marginTop="56px" marginLeft="120px">
+                            <Image height="56px" width="120px" src={Logo} />
                         </Flex>
                         <Flex alignItems="flex-end" flexDirection="column">
                             <Image src={details} />
@@ -25,10 +25,16 @@ const Login = () => {
                 </Box>
                 <Box>
                     <Grid templateColumns="1fr 1fr">
-                        <Flex alignItems="center" justifyContent="center" flexDirection="column">
+                        <Flex
+                            alignItems="center"
+                            justifyContent="center"
+                            flexDirection="column"
+                            height="70VH"
+                            minWidth="400px"
+                        >
                             <Image src={pic} />
                         </Flex>
-                        <Flex alignItems="flex-start" justifyContent="center" flexDirection="row" marginTop="50px">
+                        <Flex alignItems="flex-start" justifyContent="flex-start" flexDirection="row" marginTop="50px">
                             <Google setIsLogin={setIsLogin} />
                         </Flex>
                         {isLogin && <Redirect to="/" />}

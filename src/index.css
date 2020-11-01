@@ -10,6 +10,12 @@ button:focus {outline:0 !important;}
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Roboto Bold';
+  src: url('./fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

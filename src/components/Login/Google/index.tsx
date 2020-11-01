@@ -23,16 +23,19 @@ const Google = ({ setIsLogin }: Record<any, any>) => {
 
     return (
         <Box className="Google" width="400px">
-            <Flex justifyContent="center" alignItems="center">
-                <Text fontSize="48px" lineHeight="57px" letterSpacing="0.8px" fontWeight="600">
-                    Welcome!
-                </Text>
-            </Flex>
-            <Flex alignItems="center" justifyContent="center" marginTop="16px">
-                <Text fontSize="18px" lineHeight="32px" letterSpacing="0.2px">
-                    Log in with your Google account to fill the form. Good luck!
-                </Text>
-            </Flex>
+            <Text
+                fontSize="48px"
+                lineHeight="57px"
+                letterSpacing="0.8px"
+                fontWeight="600"
+                fontFamily="Roboto Bold"
+                textAlign="center"
+            >
+                Welcome!
+            </Text>
+            <Text fontSize="18px" lineHeight="32px" letterSpacing="0.2px" textAlign="center" marginTop="16px">
+                Log in with your Google account to fill the form. Good luck!
+            </Text>
             <Flex alignItems="center" justifyContent="center" flexDirection="row">
                 <Button
                     onClick={handleLogin}
@@ -47,7 +50,7 @@ const Google = ({ setIsLogin }: Record<any, any>) => {
                     <Image height="24px" width="24px" src={GoogleIcon} />
                     <Text
                         color="white"
-                        marginLeft="10px"
+                        marginLeft="16px"
                         fontSize="18px"
                         lineHeight="32px"
                         letterSpacing="0.2px"
