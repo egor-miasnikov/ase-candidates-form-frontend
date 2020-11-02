@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import { Box, Flex, Grid, Image } from '@chakra-ui/core'
 import { Redirect } from 'react-router-dom'
 import 'firebase/auth'
-import './index.css'
 import Google from './Google'
 import pic from '../../images/illustration.svg'
-import Logo from '../../images/ase_logo.svg'
+import Header from '../Header'
 import details from '../../images/details.svg'
 
 const Login = () => {
@@ -13,16 +12,7 @@ const Login = () => {
     return (
         <Box>
             <Grid templateRows="1fr 3fr">
-                <Box display="block">
-                    <Grid templateColumns="1fr 1fr">
-                        <Flex alignItems="flex-start" flexDirection="column" marginTop="56px" marginLeft="120px">
-                            <Image height="56px" width="120px" src={Logo} />
-                        </Flex>
-                        <Flex alignItems="flex-end" flexDirection="column">
-                            <Image src={details} />
-                        </Flex>
-                    </Grid>
-                </Box>
+                <Header rightImage={details} />
                 <Box>
                     <Grid templateColumns="1fr 1fr">
                         <Flex

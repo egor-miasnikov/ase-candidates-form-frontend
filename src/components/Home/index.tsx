@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './index.css'
 import { Box, Flex, Grid, Text } from '@chakra-ui/core'
 import Header from '../Header'
-import Footer from '../Footer'
 const Home = () => {
     const formCategories = [
         {
@@ -50,8 +48,8 @@ const Home = () => {
         </Link>
     ))
     return (
-        <div className="Home">
-            <Grid templateRows="1fr 3fr 1fr" height="100VH">
+        <Box>
+            <Grid templateRows="1fr 3fr">
                 <Header />
                 <Box>
                     <Flex paddingTop="50px" alignItems="center" justifyContent="center" flexDirection="column">
@@ -64,9 +62,8 @@ const Home = () => {
                         </Grid>
                     </Flex>
                 </Box>
-                <Footer />
             </Grid>
-        </div>
+        </Box>
     )
 }
 
