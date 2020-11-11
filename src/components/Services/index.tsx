@@ -1,4 +1,4 @@
-import { firebase, firestore, functions } from '../Firebase'
+import { firebase, firestore, functions, auth } from '../Firebase'
 
 export interface User {
     email?: string
@@ -106,20 +106,10 @@ export async function getVector(vectorName: string): Promise<Vector | null> {
     return vector as Vector
 }
 
-//DevelopmentExperiencePart = {
-//     title:
-//         'Welcome to Development Experience and Knowledge category of Advanced Engineering performance form! HERE WE NEED ADD SOME TEXT FOR DECRIPTION AND ONBOARDING',
-//     categories: [
-//         {
-//             title: 'Hands-on daily work with code',
-//             subCategories: [
-//                 {
-//                     title: 'Expert level of technical knowledge(D5+)',
-//                     placeholder: "<Tehnical stack you're using day-to-day work. Your expert area>",
-//                     stateName: 'techStack',
-//                     AseLevel: 1,
-//                 },
-//             ],
-//         },
-//     ],
-// }
+export async function setUserForm(vectorName: string, fields: Record<string, string>) {
+    const user = auth.currentUser
+    console.log(user)
+    const userFormRef = firestore.collection('users').doc(user?.uid).collection('form').doc(vectorName)
+
+    await userFormRef.set(fields, { merge: true })
+}
