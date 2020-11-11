@@ -1,6 +1,7 @@
-import { Categories, getVector, SubCategories, Vector as VectorInterface } from '../Services'
+import { Categories, getVector, SubCategories, Vector as VectorInterface, setUserForm } from '../Services'
 import React, { ChangeEvent, useState, useEffect } from 'react'
-import { Box, Divider, Flex, InputGroup, Text, Textarea, InputRightElement, Icon, Button } from '@chakra-ui/core'
+import { Box, Flex, InputGroup, Text, Textarea, InputRightElement, Icon, Button } from '@chakra-ui/core'
+import { Redirect } from 'react-router-dom'
 
 const Vector = ({ vectorName }: Record<any, any>) => {
     const initSubCategories: SubCategories[] = [{ title: '', placeholder: '', stateName: '', AseLevel: 0 }]
@@ -9,7 +10,9 @@ const Vector = ({ vectorName }: Record<any, any>) => {
 
     const [vector, setVector] = useState(initVectorState)
     const [isVector, setIsVector] = useState(false)
+    const [isBack, setIsBack] = useState(false)
     const [state, setState] = React.useState({})
+
     useEffect(() => {
         ;(async function f() {
             const vectorData = await getVector(vectorName)
@@ -40,6 +43,11 @@ const Vector = ({ vectorName }: Record<any, any>) => {
         setState({ ...state, ...localState })
     }
 
+    const saveHandler = async () => {
+        await setUserForm(vectorName, state)
+        setIsBack(true)
+    }
+
     const getCategoryList = () => {
         return vector.categories.map((category, index) => (
             <Box key={index}>
@@ -68,27 +76,67 @@ const Vector = ({ vectorName }: Record<any, any>) => {
                         </Box>
                     ))}
                 </Flex>
-                <Divider marginTop="32px" />
             </Box>
         ))
     }
 
     return (
-        <div className="Vector">
+        <Box marginLeft="120px">
             {isVector ? (
                 <Box>
                     <Flex marginTop="50px" alignItems="stretch" flexDirection="column">
-                        <Text fontSize="16px" lineHeight="19px" fontWeight="400">
+                        <Text fontSize="18px" lineHeight="32px" fontWeight="400" letterSpacing="0.2px">
                             {vector.title}
                         </Text>
                     </Flex>
                     {getCategoryList()}
-                    <Button variantColor="teal" size="lg">
-                        Save
-                    </Button>
+                    <Box marginTop="40px">
+                        <Button
+                            onClick={() => setIsBack(true)}
+                            background="#414042"
+                            h="56px"
+                            w="144px"
+                            border="1px solid #414042"
+                            _hover={{ backgroundColor: '#414042' }}
+                        >
+                            <Text
+                                fontSize="18px"
+                                lineHeight="32px"
+                                letterSpacing="0.2px"
+                                fontWeight="600"
+                                fontFamily="Roboto Bold"
+                                textAlign="center"
+                                color="#FFFFFF"
+                            >
+                                Back
+                            </Text>
+                        </Button>
+                        <Button
+                            marginLeft="24px"
+                            background="#414042"
+                            h="56px"
+                            w="144px"
+                            border="1px solid #414042"
+                            _hover={{ backgroundColor: '#414042' }}
+                            onClick={saveHandler}
+                        >
+                            <Text
+                                fontSize="18px"
+                                lineHeight="32px"
+                                letterSpacing="0.2px"
+                                fontWeight="600"
+                                fontFamily="Roboto Bold"
+                                textAlign="center"
+                                color="#FFFFFF"
+                            >
+                                Save
+                            </Text>
+                        </Button>
+                    </Box>
                 </Box>
             ) : null}
-        </div>
+            {isBack && <Redirect to="/" />}
+        </Box>
     )
 }
 
