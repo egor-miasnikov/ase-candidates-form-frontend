@@ -11,9 +11,9 @@ const firebaseConfig = {
     measurementId: 'G-PX3ZPW3PLW',
 }
 
-firebase.initializeApp(firebaseConfig)
-const auth = firebase.auth()
-const firestore = firebase.firestore()
-const functions = firebase.functions()
+const app = firebase.initializeApp(firebaseConfig)
+const auth = app.auth()
+const firestore = app.firestore()
+const functions = app.functions('europe-west3')
 
 export { firebase, auth, firestore, functions }

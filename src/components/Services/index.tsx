@@ -1,4 +1,4 @@
-import { firebase, firestore, functions, auth } from '../Firebase'
+import { firebase, firestore, functions } from '../Firebase'
 
 export interface User {
     email?: string
@@ -107,9 +107,9 @@ export async function getVector(vectorName: string): Promise<Vector | null> {
 }
 
 export async function setUserForm(vectorName: string, fields: Record<string, string>) {
-    const user = auth.currentUser
-    console.log(user)
-    const userFormRef = firestore.collection('users').doc(user?.uid).collection('form').doc(vectorName)
-
-    await userFormRef.set(fields, { merge: true })
+    try {
+        await functions.httpsCallable('setUserFrom')({ vectorName, fields })
+    } catch (e) {
+        console.error(e)
+    }
 }
