@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Image, Flex, Grid } from '@chakra-ui/core'
+import { Box, Image, Flex, Grid } from '@chakra-ui/react'
 import Logo from '../../images/ase_logo.svg'
 import { Redirect } from 'react-router-dom'
 

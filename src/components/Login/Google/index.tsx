@@ -1,6 +1,6 @@
 import { auth, firebase } from '../../Firebase'
 import { getUserInfo, User, userSignUp } from '../../Services'
-import { Box, Button, Flex, Image, Text } from '@chakra-ui/core'
+import { Box, Button, Flex, Image, Text } from '@chakra-ui/react'
 import React from 'react'
 import GoogleIcon from '../../../images/google.svg'
 

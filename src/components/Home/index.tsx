@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Box, Flex, Grid, Text, Button } from '@chakra-ui/core'
+import { Box, Flex, Grid, Text, Button, useToast } from '@chakra-ui/react'
 import Header from '../Header'
 const Home = () => {
     const formCategories = [
@@ -30,6 +30,7 @@ const Home = () => {
         },
     ]
 
+    const toast = useToast()
     const itemList = formCategories.map((category, index) => (
         <Link key={index} to={category.route}>
             <Flex align="center">
@@ -41,6 +42,17 @@ const Home = () => {
             </Flex>
         </Link>
     ))
+
+    function publishHandler() {
+        toast({
+            position: 'top-right',
+            title: 'Form published',
+            description: `We've publish your form for committee.`,
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+        })
+    }
     return (
         <Grid templateRows="1fr 3fr" height="100vh">
             <Header />
@@ -66,6 +78,7 @@ const Home = () => {
                                 h="56px"
                                 border="1px solid #414042"
                                 _hover={{ backgroundColor: '#414042' }}
+                                onClick={publishHandler}
                             >
                                 <Text
                                     fontSize="18px"

@@ -10,7 +10,7 @@ import ExpertiseSharing from '../ExpertiseSharing'
 import SphereOfInfluence from '../SphereOfInfluence'
 import SystemsEngineering from '../SystemsEngineering'
 import PioneeringAndInnovation from '../PioneeringAndInnovation'
-import { Grid, Box } from '@chakra-ui/core'
+import { Grid, Box } from '@chakra-ui/react'
 
 const App = () => {
     return (
