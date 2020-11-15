@@ -1,11 +1,6 @@
-import { ThemeProvider, ColorModeProvider, CSSReset } from '@chakra-ui/core'
+import { ChakraProvider } from '@chakra-ui/react'
 import React from 'react'
 
-const AppContainer = ({ children }: Record<string, any>) => (
-    <ThemeProvider>
-        <CSSReset />
-        <ColorModeProvider>{children}</ColorModeProvider>
-    </ThemeProvider>
-)
+const AppContainer = ({ children }: Record<string, any>) => <ChakraProvider>{children}</ChakraProvider>
 
 export default AppContainer

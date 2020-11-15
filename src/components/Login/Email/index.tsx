@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, KeyboardEvent, useState } from 'react'
 import { firebase } from '../../Firebase'
-import { Box, Button, Flex, Image, Input, InputGroup, InputRightElement, PseudoBox, Text } from '@chakra-ui/core'
+import { Box, Button, Flex, Image, Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react'
 import eye from '../../../images/eye.svg'
 import eyeOff from '../../../images/eye-off.svg'
 
@@ -91,13 +91,13 @@ const Email = ({ setIsLogin }: Record<any, any>) => {
                                 isInvalid={passError.isPassInvalid}
                             />
                             <InputRightElement top="4px" right="12px">
-                                <PseudoBox onClick={() => setShow(!show)}>
+                                <Box onClick={() => setShow(!show)}>
                                     {show ? (
                                         <Image alt="" h="16px" w="16px" src={eye} />
                                     ) : (
                                         <Image alt="" h="16px" w="16px" src={eyeOff} />
                                     )}
-                                </PseudoBox>
+                                </Box>
                             </InputRightElement>
                         </InputGroup>
                         {passError.isPassInvalid && (

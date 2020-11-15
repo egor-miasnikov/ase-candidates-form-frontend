@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Flex, Grid, Image } from '@chakra-ui/core'
+import { Box, Flex, Grid, Image } from '@chakra-ui/react'
 import { Redirect } from 'react-router-dom'
 import 'firebase/auth'
 import Google from './Google'
